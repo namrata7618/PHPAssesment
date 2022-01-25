@@ -1,0 +1,27 @@
+<?php
+// 1. Split a name string and return the name components as an array - first_name, middle_name and last_name. Return false if the count of names in the string is not 2 or 3.
+function getNameParts($name) {
+    $name_array = explode(" ",$name); // used for split string
+    if(count($name_array) == 2) { 
+        $firstname = $name_array[0]; $lastname = $name_array[1]; 
+        return ['first_name' => $firstname,'last_name'=> $lastname]; 
+    } 
+    elseif(count($name_array) == 3) { 
+        $firstname = $name_array[0]; $middlename = $name_array[1]; $lastname = $name_array[2]; 
+        return ['first_name' => $firstname,'middle_name' => $middlename, 'last_name'=> $lastname]; 
+    } 
+    else { return false; }
+}
+
+
+$test_array = ['Jack Sparrow', 'Jason Bourne', "Indiana Jones", 'James Bond', 'Vito Corleone', 'Gollum', "Harry James Potter", 'Katniss Everdeen', 'William Wallace', 'Neo',  'Maximus Decimus Meridius'];
+
+foreach ($test_array as $test_string) {
+    $result = getNameParts($test_string);
+    if ($result === false) {
+        echo "Invalid name \"$test_string\"\n";
+    } else {
+        print_r($result);
+    }
+    
+}
