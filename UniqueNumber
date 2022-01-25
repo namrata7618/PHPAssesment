@@ -1,0 +1,31 @@
+<?php 
+
+class PhpSolution {
+
+    function uniqueNumber($nums){
+        $totalcount = array_count_values($nums);
+        $i = 0;
+        $unique = array();
+        foreach($totalcount as $k=>$v){
+            if($v==1){
+                $unique[$i]=$k;
+            }else if($v!=2){
+                $duplicate_nums[$i]=$k;
+            }
+            $i++;
+        }
+        // if(count($unique) > 1 && !empty($duplicate_nums))
+        if(count($unique) > 1 || !empty($duplicate_nums)){
+            echo "Output : Not a valid array";
+        }else{
+           $arr_result =  array_values($unique);
+           echo $arr_result[0]; 
+        }
+
+    }
+}
+//$nums = [4,1,5,1,2];
+$nums = [4,4,6,6,5,5,1];
+$obj = new PhpSolution();
+$obj->uniqueNumber($nums);
+
