@@ -1,0 +1,22 @@
+<?php
+class solution{
+    public function removeDuplicates(&$nums) {
+        $unique = $nums;
+        $return = true;
+        foreach($nums as $k=>$v){
+            if($v!=$unique[$k]){
+                $return = false; 
+            }     
+        }
+        if($return){
+              $unique_array = array_unique($unique);
+              echo "Count: ".count($unique_array); // show the total count in array
+              echo "\n";
+              $string=implode(",",$unique_array);
+              echo "Array value in ascending order: " .$string;
+        }
+    }
+}
+$nums = [1,2,2,2,2,3,5,7,7];
+$data = new solution();
+$data->removeDuplicates($nums);
