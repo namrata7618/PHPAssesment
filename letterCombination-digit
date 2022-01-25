@@ -1,0 +1,52 @@
+<?php
+/*
+  Php Program for
+  Print all possible words from phone digits 
+*/
+class Words
+{
+	// Print word combination
+	public	function word( & $record, $result, $num, $n, $m, $i, $j)
+	{
+		if ($i == $m)
+		{
+			echo "\t". $result;
+			return;
+		}
+		// Select number
+		$x = ord($num[$i]) - ord('0');
+		if ($x < $n && strlen($record[$x]) > 0)
+		{
+			for ($y = 0; $y < strlen($record[$x]); ++$y)
+			{
+				$this->word($record, $result.$record[$x][$y], $num, $n, $m, $i + 1, $j + 1);
+			}
+		}
+		else
+		{
+			$this->word($record, $result, $num, $n, $m, $i + 1, $j);
+		}
+	}
+	// Handles the request of print all keypad combination of given number
+	public	function findWord( & $record, $num, $n)
+	{
+		$m = strlen($num);
+		if ($m > 0)
+		{
+			$result = "";
+			echo "\n Given number : ". $num ." \n";
+			$this->word($record, $result, $num, $n, $m, 0, 0);
+		}
+	}
+}
+
+function letterCombinations()
+{
+	$task = new Words();
+	// Keypad word of number of (1 to 9)
+	$record = array("", "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ");
+	$n = count($record);
+	$num1 = "524";
+	$task->findWord($record, $num1, $n);
+}
+letterCombinations();
