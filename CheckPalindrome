@@ -1,0 +1,16 @@
+<?php
+// Create a function to check whether the given string is a palindrome. Palindrome should be check without considering the spaces and characters inside the string.
+
+function checkPalindrome($string) {
+    // $reverseString = strrev($string);
+    $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string);  //change case to lower
+    $string = strtolower($string);  //reverse the string
+    //$reverse = strrev(strtolower($string));
+    return ($string == strrev(strtolower($string))) ? true : false;
+}
+$test_array = ['madam', 'here it is', "Dammit, I'm mad!", 'true words', 'palindromes', 'education unlimited', "Madam, in Eden, I'm Adam", 'Stressed desserts', 'test', 'UFO tofu'];
+
+foreach ($test_array as $test_string) {
+    $result = (checkPalindrome($test_string) === true) ? '' : 'not ';
+    echo "{$test_string} is {$result}a palindrome.\n";
+}
