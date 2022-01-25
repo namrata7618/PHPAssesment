@@ -1,0 +1,16 @@
+<?php
+function reverse($x) {
+        //if (is_int($x) === false) return 0;
+        //if ($x === null || $x === 0) return 0;
+        // if ($x > -9 && $x < 9) return $x;
+         $digval = ($x < 0) ? -1 : 1;
+         $rev = $digval * (int)strrev(abs($x));
+        if ($rev < -2147483648 || $rev >  2147483647) return 0;
+
+        return $rev;
+    }
+    $x = 999999888888888;
+    // $x = 7532;
+     //$x = -777777;
+    echo "Reverse of no. is ",
+	reverse($x);
