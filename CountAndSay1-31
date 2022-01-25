@@ -1,0 +1,18 @@
+<?php
+function countAndSay($n) {
+	return preg_replace_callback('#(.)\1*#', function($strmatch) {
+		return strlen($strmatch[0]).$strmatch[1];
+	}, $n);
+}
+$num = "1";
+foreach(range(1,31) as $i) {
+     if ($i > 30 || $i<1){ 
+        echo "It should be from 1 to 30 only"."\n"; 
+        exit; 
+      } 
+      else{
+          echo $num."\n";
+      }
+	$num = countAndSay($num);
+}
+ 
